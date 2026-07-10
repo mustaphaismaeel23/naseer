@@ -1,0 +1,8 @@
+{
+  "tokenMintAddress": "",
+  "heliusApiKey": "",
+  "birdeyeApiKey": "",
+  "solanaRpcUrl": "",
+  "dexscreenerApiUrl": "https://api.dexscreener.com/latest/dex/tokens/",
+  "refreshInterval": 60
+}
