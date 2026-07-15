@@ -13,13 +13,22 @@ function ensureStorage() {
 
 export function loadSettings(): Settings {
   ensureStorage();
+
+  let savedSettings: Settings;
   if (!existsSync(storageFile)) {
     saveSettings(defaultSettings);
-    return resolveSettings(defaultSettings);
+    savedSettings = defaultSettings;
+  } else {
+    const raw = readFileSync(storageFile, 'utf8');
+    savedSettings = resolveSettings(parseSettings(JSON.parse(raw)));
   }
 
-  const raw = readFileSync(storageFile, 'utf8');
-  return resolveSettings(parseSettings(JSON.parse(raw)));
+  const mergedSettings = resolveSettings(savedSettings);
+  if (JSON.stringify(mergedSettings) !== JSON.stringify(savedSettings)) {
+    saveSettings(mergedSettings);
+  }
+
+  return mergedSettings;
 }
 
 export function saveSettings(settings: Settings) {
