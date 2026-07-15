@@ -16,6 +16,8 @@ type AnalyticsPayload = {
     dexscreenerConfigured: boolean;
   };
   source: 'live' | 'mock';
+  tokenMintAddress?: string;
+  mintAddress?: string;
 };
 
 function buildFallbackPayload(view: AnalyticsView): AnalyticsPayload {
@@ -52,7 +54,11 @@ export async function getAnalyticsSnapshot(view: AnalyticsView = 'overview'): Pr
     }
 
     const payload = await response.json();
-    return { ...buildFallbackPayload(view), ...payload, source: payload.source || 'live' };
+    return {
+      ...buildFallbackPayload(view),
+      ...(payload || {}),
+      source: payload?.source || 'live'
+    };
   } catch {
     return buildFallbackPayload(view);
   }

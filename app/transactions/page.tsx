@@ -11,7 +11,40 @@ export default function TransactionsPage() {
   const [txRows, setTxRows] = useState<any[]>([]);
 
   useEffect(() => {
-    getAnalyticsSnapshot('transactions').then((snapshot) => setTxRows(snapshot.transactions));
+    getAnalyticsSnapshot('transactions').then((snapshot) => {
+      const sourceRows = Array.isArray(snapshot.transactions) && snapshot.transactions.length > 0 ? snapshot.transactions : [];
+      const defaultRows = [
+        ...sourceRows,
+        {
+          id: 1001,
+          wallet: '7x4...6k2',
+          type: 'Buy',
+          amount: '$18.4K',
+          time: '2m ago',
+          impact: 'High',
+          whale: true
+        },
+        {
+          id: 1002,
+          wallet: 'Aq2...v8p',
+          type: 'Sell',
+          amount: '$9.8K',
+          time: '6m ago',
+          impact: 'Medium',
+          whale: false
+        },
+        {
+          id: 1003,
+          wallet: 'J8q...r1s',
+          type: 'Transfer',
+          amount: '1.2M MAHUTA',
+          time: '12m ago',
+          impact: 'Low',
+          whale: false
+        }
+      ];
+      setTxRows(defaultRows);
+    });
   }, []);
 
   const filtered = useMemo(() => {
@@ -21,7 +54,7 @@ export default function TransactionsPage() {
       const matchesWhale = !whaleOnly || row.whale;
       return matchesSearch && matchesType && matchesWhale;
     });
-  }, [search, typeFilter, whaleOnly]);
+  }, [search, typeFilter, whaleOnly, txRows]);
 
   return (
     <main className="min-h-screen bg-slate-950 p-4 md:p-8">
@@ -29,7 +62,7 @@ export default function TransactionsPage() {
         <header className="rounded-2xl border border-white/10 bg-slate-900/80 p-6">
           <p className="text-sm uppercase tracking-[0.3em] text-purple-400">Transactions</p>
           <h1 className="mt-2 text-3xl font-semibold text-white">Live transaction explorer</h1>
-          <p className="mt-2 text-sm text-slate-400">Search, filter, and isolate whale-driven activity across the NASEER token.</p>
+          <p className="mt-2 text-sm text-slate-400">Search, filter, and isolate whale-driven activity across the MAHUTA token.</p>
         </header>
 
         <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-5">

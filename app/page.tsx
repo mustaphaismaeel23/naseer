@@ -23,9 +23,12 @@ export default function HomePage() {
       <div className="mx-auto max-w-7xl space-y-6">
         <header className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-slate-900/70 p-6 shadow-2xl shadow-purple-950/30 backdrop-blur xl:flex-row xl:items-center xl:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-purple-400">NASEER Analytics</p>
+            <p className="text-sm uppercase tracking-[0.3em] text-purple-400">MAHUTA Analytics</p>
             <h1 className="mt-2 text-3xl font-semibold text-white">Official token intelligence dashboard</h1>
-            <p className="mt-2 max-w-2xl text-sm text-slate-400">Monitor live blockchain activity, market health, holders, and whale behavior for the NASEER token.</p>
+            <p className="mt-2 max-w-2xl text-sm text-slate-400">Monitor live blockchain activity, market health, holders, and whale behavior for the MAHUTA token.</p>
+            <p className="mt-2 text-sm text-purple-300">
+              Active mint: <span className="font-mono text-purple-200">{snapshot.tokenMintAddress || snapshot.mintAddress || 'Not configured'}</span>
+            </p>
           </div>
           <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
             <div className="flex items-center gap-2"><ShieldCheck size={16} /> Live sync enabled</div>
@@ -111,8 +114,8 @@ export default function HomePage() {
             </div>
           </div>
           <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
-            <div className="mb-4 flex items-center gap-2 text-white"><Settings2 size={18} className="text-purple-400" /> Admin-ready configuration</div>
-            <p className="text-sm text-slate-400">Set the token mint address, Helius key, Birdeye key, RPC endpoint, and refresh interval from the admin panel without editing code.</p>
+            <div className="mb-4 flex items-center gap-2 text-white"><Settings2 size={18} className="text-purple-400" /> Configuration-ready dashboard</div>
+            <p className="text-sm text-slate-400">Use environment variables and configured settings to manage token mint address, API keys, RPC endpoint, and refresh behavior.</p>
             <div className="mt-4 rounded-xl border border-purple-500/20 bg-purple-500/10 p-4 text-sm text-purple-200">Configuration is centralized in one settings interface so another Solana token can be tracked by changing the mint address only.</div>
           </div>
         </section>

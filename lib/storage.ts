@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import path from 'path';
-import { defaultSettings, parseSettings, type Settings } from './config';
+import { defaultSettings, parseSettings, resolveSettings, type Settings } from './config';
 
 const storageDir = path.join(process.cwd(), 'data');
 const storageFile = path.join(storageDir, 'settings.json');
@@ -15,11 +15,11 @@ export function loadSettings(): Settings {
   ensureStorage();
   if (!existsSync(storageFile)) {
     saveSettings(defaultSettings);
-    return defaultSettings;
+    return resolveSettings(defaultSettings);
   }
 
   const raw = readFileSync(storageFile, 'utf8');
-  return parseSettings(JSON.parse(raw));
+  return resolveSettings(parseSettings(JSON.parse(raw)));
 }
 
 export function saveSettings(settings: Settings) {

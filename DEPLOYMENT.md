@@ -16,5 +16,5 @@
 ## Production flow
 
 1. Create the token on Solana.
-2. Add the mint address and API credentials in the admin panel.
+2. Set the mint address and API credentials via environment variables.
 3. The dashboard will begin reading the configured token data automatically.

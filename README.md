@@ -1,11 +1,11 @@
-# NASEER Token Analytics Platform
+# MAHUTA Token Analytics Platform
 
-A production-ready Solana token analytics platform for $NASEER with a responsive crypto dashboard, admin configuration, and API integration layer.
+A production-ready Solana token analytics platform for $MAHUTA with a responsive crypto dashboard and API integration layer.
 
 ## Features
 
 - Responsive dark UI for token analytics
-- Admin panel for mint address, API keys, RPC URL, and refresh interval
+- Configurable token settings via environment variables
 - REST endpoints for dashboard and analytics data
 - Ready for deployment on Vercel with PostgreSQL and Redis support
 
@@ -19,7 +19,7 @@ HELIUS_API_KEY=
 BIRDEYE_API_KEY=
 SOLANA_RPC_URL=
 DEXSCREENER_API_URL=https://api.dexscreener.com/latest/dex/tokens/
-NEXT_PUBLIC_APP_NAME=NASEER Token Analytics
+NEXT_PUBLIC_APP_NAME=MAHUTA Token Analytics
 ```
 
 ## Local development

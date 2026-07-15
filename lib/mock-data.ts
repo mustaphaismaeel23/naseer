@@ -44,7 +44,7 @@ export const priceSeries = [
 export const transactions: TransactionRow[] = [
   { id: 1, wallet: '7x4...6k2', type: 'Buy', amount: '$18.4K', time: '2m ago', impact: 'High', whale: true },
   { id: 2, wallet: 'Aq2...v8p', type: 'Sell', amount: '$9.8K', time: '6m ago', impact: 'Medium', whale: false },
-  { id: 3, wallet: 'J8q...r1s', type: 'Transfer', amount: '1.2M NASEER', time: '12m ago', impact: 'Low', whale: false },
+  { id: 3, wallet: 'J8q...r1s', type: 'Transfer', amount: '1.2M MAHUTA', time: '12m ago', impact: 'Low', whale: false },
   { id: 4, wallet: 'M9p...t7x', type: 'Buy', amount: '$27.1K', time: '18m ago', impact: 'High', whale: true },
   { id: 5, wallet: 'F3n...w1b', type: 'Sell', amount: '$4.2K', time: '27m ago', impact: 'Medium', whale: false }
 ];
