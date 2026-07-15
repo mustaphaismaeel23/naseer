@@ -49,8 +49,20 @@ function readEnvFile(): Record<string, string> {
   }, {});
 }
 
+function getEnvValues(): Record<string, string> {
+  return {
+    ...readEnvFile(),
+    ...Object.entries(process.env).reduce<Record<string, string>>((acc, [key, value]) => {
+      if (typeof value === 'string') {
+        acc[key] = value;
+      }
+      return acc;
+    }, {})
+  };
+}
+
 export function resolveSettings(savedSettings: Partial<Settings> = {}): Settings {
-  const envValues = readEnvFile();
+  const envValues = getEnvValues();
   const merged = {
     ...defaultSettings,
     ...savedSettings,
